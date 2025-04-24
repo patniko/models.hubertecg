@@ -21,18 +21,90 @@ All our models are accessible on Hugging Face [(https://huggingface.co/Edoardo-B
 **Remember to pre-process your data before feeding HuBERT-ECG. Take a look at Data and Preprocessing section in the paper**
 
 ## Installation
-Clone this repository and install all the necessary dependecies written in the `requirements.txt` file with ```pip install -r requirements.txt```.
+
+### Using Poetry (Recommended)
+We now use Poetry for dependency management. To install the project with Poetry:
+
+```bash
+# Install Poetry if you don't have it
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install dependencies
+poetry install
+```
+
+### Using pip
+Alternatively, you can still install dependencies using pip:
+
+```bash
+pip install -r requirements.txt
+```
+
 Full installation time may take up to 1 minute.
+
+## Docker Integration
+
+We provide Docker integration for easy setup and reproducibility. You can run HuBERT-ECG with Jupyter Notebook using Docker:
+
+```bash
+# Build the Docker image
+make build-jupyter
+
+# Run Jupyter in a Docker container
+make run-jupyter
+```
+
+This will start a Jupyter Notebook server accessible at http://localhost:8888.
+
+## Jupyter Notebook
+
+We provide a demo notebook (`HuBERT-ECG-Demo.ipynb`) that shows how to use the HuBERT-ECG model for ECG classification. You can run it using:
+
+```bash
+# Using Poetry
+make jupyter
+
+# Or directly
+python run_jupyter.py
+```
 
 ## Reproducibility
 In the `reproducibility` folder you can find all train, validation, and test splits we used in our work as .csv files. You simply have to follow the instructions in the `reproducibility/README.md` to reproduce our results.
 As an example, you can easily fine-tune and evaluate an instance of HuBERT-ECG on PTB-XL All dataset, as shown in .sh scripts `finetune.sh` and `test.sh`.
 Prediction on a single instance takes less than 1 second on an A100 GPU node.
 
+## Makefile Commands
+
+We provide a Makefile with useful commands:
+
+```bash
+# Show available commands
+make help
+
+# Setup Poetry environment
+make setup
+
+# Setup Poetry environment with dev dependencies
+make setup-dev
+
+# Run Jupyter notebook
+make jupyter
+
+# Build Docker image for Jupyter
+make build-jupyter
+
+# Run Jupyter in a Docker container
+make run-jupyter
+
+# Clean up temporary files
+make clean
+
+# Run tests
+make test
+```
+
 ## 📚 Citation
 If you use our models or find our work useful, please consider citing us:
 ```
 doi: https://doi.org/10.1101/2024.11.14.24317328
 ```
-
-
