@@ -42,6 +42,19 @@ pip install -r requirements.txt
 
 Full installation time may take up to 1 minute.
 
+### Setting up the PTB-XL Dataset
+To use the HuBERT-ECG model with the PTB-XL dataset, you need to download and process the dataset. We provide a convenient script to do this:
+
+```bash
+# Using Poetry
+make ptbxl-setup
+
+# Or directly
+poetry run python scripts/setup_ptbxl.py
+```
+
+This will download the PTB-XL dataset from PhysioNet, extract it, and process the ECG data to create .npy files that match the filenames in the CSV files. The processed data will be stored in the `data/ptbxl/processed` directory.
+
 ## Docker Integration
 
 We provide Docker integration for easy setup and reproducibility. You can run HuBERT-ECG with Jupyter Notebook using Docker:

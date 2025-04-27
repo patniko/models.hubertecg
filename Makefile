@@ -19,6 +19,7 @@ help:
 	@echo "${GREEN}Setup Commands:${NC}"
 	@echo "  make setup              Setup Poetry environment"
 	@echo "  make setup-dev          Setup Poetry environment with dev dependencies"
+	@echo "  make ptbxl-setup        Download and setup the PTB-XL dataset"
 	@echo ""
 	@echo "${GREEN}Run Commands:${NC}"
 	@echo "  make jupyter            Run Jupyter notebook"
@@ -44,6 +45,12 @@ setup:
 setup-dev:
 	@echo "${YELLOW}Setting up Poetry environment with dev dependencies...${NC}"
 	@$(POETRY) install --with dev
+
+.PHONY: ptbxl-setup
+ptbxl-setup:
+	@echo "${YELLOW}Setting up PTB-XL dataset...${NC}"
+	@$(POETRY) run python scripts/setup_ptbxl.py
+	@echo "${GREEN}PTB-XL dataset setup complete!${NC}"
 
 # Run commands
 .PHONY: jupyter
